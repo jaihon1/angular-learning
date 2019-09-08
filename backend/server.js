@@ -23,11 +23,11 @@ app.use(session({
 }));
 
 
-
+var messages = [{text: 'some text', owner: 'Tim'}, {text: 'some other text', owner: 'Jim'}];
 
 /*************************** GET METHODS ***************************/
-app.get('/', (req, res) => {
-    res.send('hello');
+app.get('/messages', (req, res) => {
+    res.json(messages);
 });
 
 
