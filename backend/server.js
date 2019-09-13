@@ -22,23 +22,38 @@ app.use(session({
     }
 }));
 
+var api = express.Router();
+app.use('/api', api);
 
 
-app.use( (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-    res.header('Content-Type', 'application/json');
-    next();
-});
+
+// app.use( (req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+//     res.header('Content-Type', 'application/json');
+//     next();
+// });
 
 
 var messages = [{text: 'some text11', owner: 'Tim'}, {text: 'some other text', owner: 'Jim'}];
 
 /*************************** GET METHODS ***************************/
-app.get('/api/messages', (req, res) => {
+
+
+
+api.get('/messages', (req, res) => {
     res.json(messages);
 });
+
+api.post('/messages', (req, res) => {
+    console.log(req.body);
+    messages.push(req.body);
+    res.sendStatus(200);
+    
+});
+
+
 
 
 
