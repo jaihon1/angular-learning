@@ -23,10 +23,20 @@ app.use(session({
 }));
 
 
-var messages = [{text: 'some text', owner: 'Tim'}, {text: 'some other text', owner: 'Jim'}];
+
+app.use( (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    res.header('Content-Type', 'application/json');
+    next();
+});
+
+
+var messages = [{text: 'some text11', owner: 'Tim'}, {text: 'some other text', owner: 'Jim'}];
 
 /*************************** GET METHODS ***************************/
-app.get('/messages', (req, res) => {
+app.get('/api/messages', (req, res) => {
     res.json(messages);
 });
 

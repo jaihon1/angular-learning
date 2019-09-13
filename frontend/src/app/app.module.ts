@@ -6,6 +6,8 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages.component';
+import { WebService } from "./web.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,10 +19,11 @@ import { MessagesComponent } from './messages.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
     
   ],
-  providers: [],
+  providers: [WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
