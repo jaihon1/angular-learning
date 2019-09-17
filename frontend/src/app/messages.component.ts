@@ -7,16 +7,18 @@ import { WebService } from "./web.service";
 })
 
 export class MessagesComponent {
-    constructor(private webService : WebService) {
+    messages: Object;
 
+    constructor(private webService : WebService) {
+        
     }
     async ngOnInit(){
-        let response = await this.webService.getMessages();
+        this.messages = await this.webService.getMessages();
         console.log("Getting messages from node");
-        console.log(response);
+        console.log(this.messages);
     } 
 
-    messages = [{text: 'some text', owner: 'Tim'}, {text: 'some other text', owner: 'Jim'}];
+    //messages = [{text: 'some text', owner: 'Tim'}, {text: 'some other text', owner: 'Jim'}];
 
 }
 
