@@ -8,11 +8,5 @@ import { NewMessageComponent } from "./new-message.component";
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    @ViewChild(MessagesComponent, {static: false}) messages: MessagesComponent;
 
-    onPosted(message) {
-        console.log(message);
-        
-        //this.messages.messages.push(message);
-    }
 }

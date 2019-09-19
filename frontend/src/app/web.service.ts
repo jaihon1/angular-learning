@@ -23,6 +23,8 @@ export class WebService {
     }
 
     postMessage(message){
+        console.log('New message');
+        console.log(message);
         return this.http.post(this.BASE_URL + '/messages', message).toPromise() ;
     }
 
